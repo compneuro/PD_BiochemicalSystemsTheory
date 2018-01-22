@@ -1,0 +1,1870 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ========================================================= -->
+
+<!-- This model have been published in the following paper: 
+
+Sasidharakurup H, Melethadathil N, Nair B, Diwakar S. "A Systems Model of Parkinson's Disease Using Biochemical Systems Theory", OMICS:A Journal of Integrative Biology 2017 21 8,454 -464.
+Available at: http://online.liebertpub.com/doi/full/10.1089/omi.2017.0056 -->
+
+
+<!-- Major pathways involving in Parkinson's disease such as alphasynuclein aggregation, dopamine synthesis, Lewy body formation, tau phosphorylation, parkin, and apoptosis were modeled 
+using stochastic differential equations. Pathways were modeled and simulated using the biochemical pathway visualization program CellDesigner, a modeling tool for gene-regulatory and biochemical networks that support graphical notation and listing of symbols. -->
+
+<!-- Last updated 10-January-2018
+Developed by : Hemalatha Sasidharakurup & Dr. Shyam Diwakar    
+Computational Neuroscience & Neurophysiology Lab, School of Biotechnology, Amrita University, India.
+Email: shyam@amrita.edu, hemalathas@am.amrita.edu
+www.amrita.edu/compneuro -->
+
+<!-- ========================================================= -->
+
+
+
+
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+<model metaid="braatz_new" id="braatz_new">
+<annotation/>
+
+<listOfUnitDefinitions>
+
+<unitDefinition metaid="substance" id="substance" name="substance">
+<listOfUnits>
+<unit metaid="CDMT00586" kind="mole"/>
+</listOfUnits>
+</unitDefinition>
+<unitDefinition metaid="volume" id="volume" name="volume">
+<listOfUnits>
+<unit metaid="CDMT00587" kind="litre"/>
+</listOfUnits>
+</unitDefinition>
+<unitDefinition metaid="area" id="area" name="area">
+<listOfUnits>
+<unit metaid="CDMT00588" kind="metre" exponent="2"/>
+</listOfUnits>
+</unitDefinition>
+<unitDefinition metaid="length" id="length" name="length">
+<listOfUnits>
+<unit metaid="CDMT00589" kind="metre"/>
+</listOfUnits>
+</unitDefinition>
+<unitDefinition metaid="time" id="time" name="time">
+<listOfUnits>
+<unit metaid="CDMT00590" kind="second"/>
+</listOfUnits>
+</unitDefinition>
+
+</listOfUnitDefinitions>
+
+
+<listOfCompartments>
+
+<compartment metaid="default" id="default" size="1" units="volume"/>
+
+</listOfCompartments>
+
+
+<listOfSpecies>
+
+<species metaid="s7" id="s7" name="glutathione expression" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s6" id="s6" name="glutathione" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s4" id="s4" name="dehydroascorbate cyt" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s5" id="s5" name="ascorbate" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s8" id="s8" name="glutathione gene" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s9" id="s9" name="DA into vesicle" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s10" id="s10" name="unused" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s14" id="s14" name="H2O2 degradation" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s21" id="s21" name="Ca2+ ER" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s43" id="s43" name="ATPase empty" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s45" id="s45" name="ryanodine emplty" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s48" id="s48" name="IP3 empty" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s50" id="s50" name="ER stress/UPR" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s66" id="s66" name="unknown" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s51" id="s51" name="ROS ER" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s52" id="s52" name="Pael - R" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s54" id="s54" name="Ca2+ cyt" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s55" id="s55" name="O2 cyt" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s56" id="s56" name="H2O2 cyt" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s63" id="s63" name="Ca2+/Na2+ transport empty " compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s64" id="s64" name="TRPC1 empty" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s65" id="s65" name="Ca2+ out" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s67" id="s67" name="VDCC empty" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s70" id="s70" name="Parkin misfold" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s74" id="s74" name="Parkin" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s75" id="s75" name="ROS induced parkin misfold" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s40" id="s40" name="ROS" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s41" id="s41" name="ROS a" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s80" id="s80" name="O2- cyt" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s81" id="s81" name="OH-" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s82" id="s82" name="ONOO-" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s83" id="s83" name="Lipid peroxidise formation" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s84" id="s84" name="lipids" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s85" id="s85" name="lipid peroxidise" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s86" id="s86" name="Lewybody formation" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s87" id="s87" name="Cell death" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s88" id="s88" name="Tau P" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s89" id="s89" name="a synuclein aggregates cyt" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s90" id="s90" name="inflammation" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s91" id="s91" name="NF-kB (non canonical) nu" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s92" id="s92" name="Unknown" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s93" id="s93" name="Lewibodies" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s94" id="s94" name="neurofibrillary tangles" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s95" id="s95" name="impeded axonal transport" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s98" id="s98" name="a synuclein" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s99" id="s99" name="nuclear transport empty a" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s117" id="s117" name="Tau" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s119" id="s119" name="insulin signaling" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s140" id="s140" name="dopamine out" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s141" id="s141" name="Na+" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s142" id="s142" name="Dopamine cyt" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s143" id="s143" name="Dopamine reuptake" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s144" id="s144" name="DART RNA" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s145" id="s145" name="lipid peroxidation" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s146" id="s146" name="lipid peroxidise" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s147" id="s147" name="lipids" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s148" id="s148" name="O2- cyt" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s161" id="s161" name="ROS nu" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s162" id="s162" name="SP1" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s163" id="s163" name="SP1 ac" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s167" id="s167" name="NRF-1 " compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s164" id="s164" name="NRF-1 expression" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s166" id="s166" name="NRF-1 gene" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s190" id="s190" name="Dopamine reuptake transporter" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s191" id="s191" name="DART gene" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s192" id="s192" name="NF-kB(non canonical to nu)" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s193" id="s193" name="NF-kB (noncanonical) Cyt Ub" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s211" id="s211" name="NF-kB (noncanonical)Cyt" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s212" id="s212" name="NF-kB (noncanonical)" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s224" id="s224" name="O2- Cyt" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s225" id="s225" name="NO out" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s226" id="s226" name="H2O2 Cyt" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s227" id="s227" name="O2- degradation" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s228" id="s228" name="H2O2 degradation" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s229" id="s229" name="O2 Cyt" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s230" id="s230" name="H2O2  degradation to OH-" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s231" id="s231" name="H2O2m" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s232" id="s232" name="Dopamine metabolism" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s233" id="s233" name="ONOO-" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s234" id="s234" name="H2O Cyt" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s235" id="s235" name="Ferrocytochrome C" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s236" id="s236" name="PIP2 " compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s237" id="s237" name="PIP2 " compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s238" id="s238" name="DOPAL" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s239" id="s239" name="NH2+" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s240" id="s240" name="Pael-R Ub" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s242" id="s242" name="UPS" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s245" id="s245" name="PARIS Ub" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s246" id="s246" name="Pael-R Ubiquitination" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s247" id="s247" name="PARIS" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s248" id="s248" name="PARIS Ubiquitination" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s258" id="s258" name="NO Cyt" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s259" id="s259" name="NO a" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s260" id="s260" name="NO m" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s270" id="s270" name="DA quinones" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s274" id="s274" name="L-Dopa Synthesis" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s275" id="s275" name="L-Dopa" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s276" id="s276" name="tyrosine" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s277" id="s277" name="Dopamine Synthesis" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s314" id="s314" name="Necrosis" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s299" id="s299" name="Cytochrome c released" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s293" id="s293" name="Apoptosome" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s298" id="s298" name="Cytochrome c Cyt" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s295" id="s295" name="APAF-1" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s294" id="s294" name="dATP mt" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s290" id="s290" name="Caspase 3" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s297" id="s297" name="Apoptosome formation" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s292" id="s292" name="Caspases" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s289" id="s289" name="Procaspase 3 " compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s291" id="s291" name="IAP" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s309" id="s309" name="CLPP-1 deactivated" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s312" id="s312" name="SMAC/DIABLO release from mitochondria" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s313" id="s313" name="SMAC/DIABLO mt" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s311" id="s311" name="SMAC/DIABLO Cyt" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s308" id="s308" name="SMAL/DIABLO Cyt" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s288" id="s288" name="Caspase 3 maturation" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s324" id="s324" name="PKCd catalytic Unit" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s183" id="s183" name="DNA Fragmentation" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s325" id="s325" name="ATP Depletion" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s326" id="s326" name="ONOO-" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s327" id="s327" name="Chromosome Condensation" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s328" id="s328" name="Apoptosis" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s329" id="s329" name="Cytochrome c release from mitochondria" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s330" id="s330" name="Cytochrome c mt" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s331" id="s331" name="Hsp27(active)" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s332" id="s332" name="PKCd Cleavage" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s333" id="s333" name="PKCd" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s334" id="s334" name="Caspase 9 maturation" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s335" id="s335" name="Procaspase 9" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s336" id="s336" name="Caspase 9" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s221" id="s221" name="mitochondrial protein genes mt" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s200" id="s200" name="JUN" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s201" id="s201" name="JUN" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s218" id="s218" name="Hsp70 activation" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s217" id="s217" name="tmTNFa a" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s184" id="s184" name="Hsp 70" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s180" id="s180" name="AIF" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s181" id="s181" name="AIF Nu" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s219" id="s219" name="PINK1 Cyt" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s182" id="s182" name="Chromosome condensation" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s337" id="s337" name="APAF-1 expression" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s338" id="s338" name="APAF-1 gene" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s339" id="s339" name="Hsp90(active)" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s340" id="s340" name="Hsp90 APAF inhibition complex" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s341" id="s341" name="Hsp70 APAF inhibition complex" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s342" id="s342" name="Hsp90" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s346" id="s346" name="Hsp70 gene" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s347" id="s347" name="Hsp70 expression" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s348" id="s348" name="Hsp70(active)" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s352" id="s352" name="Hsp27 activation" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s96" id="s96" name="Hsp27" compartment="default" initialAmount="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s44" id="s44" name="Ca2+ into ER complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s46" id="s46" name="Ca2+ to ryanodine complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s47" id="s47" name="ryanodine complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s49" id="s49" name="IP3 complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s60" id="s60" name="TRPC1 complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s61" id="s61" name="VDCC complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s62" id="s62" name="Na+/Ca2+ transport omplex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s69" id="s69" name="Ca2+ to VDCC complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s97" id="s97" name="Tau P inhibition complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s118" id="s118" name="insulin receptor complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s138" id="s138" name="dopamine to dopamine reuptake transporter complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s139" id="s139" name="dopamine reuptake complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s223" id="s223" name="VDAC Complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s241" id="s241" name="Pael-R degradation complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s243" id="s243" name="Parkin degradation complex formation" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s244" id="s244" name="PARIS degradation Complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s296" id="s296" name="Caspase 9 inhibition complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s307" id="s307" name="IAP inhibition complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s310" id="s310" name="Caspase 3 inhibition complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s316" id="s316" name="Cyt c Inhibition Complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s220" id="s220" name="Hsp70 APAF inhibition complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s222" id="s222" name="AIF inhibition complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s202" id="s202" name="JNK inhibition complex" compartment="default" initialAmount="0">
+<annotation/>
+</species>
+
+</listOfSpecies>
+
+
+<listOfReactions>
+
+<reaction metaid="re61" id="re2" name="re2" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00005" species="s4"/>
+<speciesReference metaid="CDMT00006" species="s6"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00007" species="s5"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re7" id="re3" name="re3" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00008" species="s7"/>
+<speciesReference metaid="CDMT00009" species="s8"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00010" species="s6"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re8" id="re4" name="re4" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00011" species="s9"/>
+<speciesReference metaid="CDMT00012" species="s10"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00013" species="s6"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re23" id="re7" name="re7" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00020" species="s43"/>
+<speciesReference metaid="CDMT00021" species="s54"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00022" species="s44"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re24" id="re8" name="re8" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00023" species="s44"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00024" species="s21"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="CDMT00057" id="re9" name="re9" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00025" species="s45"/>
+<speciesReference metaid="CDMT00026" species="s46"/>
+<speciesReference metaid="CDMT00027" species="s21"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00028" species="s47"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re27" id="re10" name="re10" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00029" species="s48"/>
+<speciesReference metaid="CDMT00030" species="s21"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00031" species="s49"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re28" id="re11" name="re11" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00032" species="s21"/>
+<speciesReference metaid="CDMT00033" species="s50"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00034" species="s66"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re29" id="re12" name="re12" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00035" species="s51"/>
+<speciesReference metaid="CDMT00036" species="s52"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00037" species="s50"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re31" id="re13" name="re13" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00038" species="s49"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00039" species="s54"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re32" id="re14" name="re14" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00040" species="s6"/>
+<speciesReference metaid="CDMT00041" species="s14"/>
+<speciesReference metaid="CDMT00042" species="s56"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00043" species="s55"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re36" id="re15" name="re15" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00044" species="s47"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00045" species="s54"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re37" id="re16" name="re16" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00046" species="s60"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00047" species="s54"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re39" id="re17" name="re17" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00048" species="s62"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00049" species="s54"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re40" id="re18" name="re18" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00050" species="s63"/>
+<speciesReference metaid="CDMT00051" species="s54"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00052" species="s66"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re41" id="re19" name="re19" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00053" species="s64"/>
+<speciesReference metaid="CDMT00054" species="s65"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00055" species="s60"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re42" id="re20" name="re20" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00056" species="s67"/>
+<speciesReference metaid="CDMT00058" species="s65"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00059" species="s69"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re43" id="re21" name="re21" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00060" species="s69"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00061" species="s61"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re44" id="re22" name="re22" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00062" species="s61"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00063" species="s54"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re45" id="re23" name="re23" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00064" species="s41"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00065" species="s40"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re38" id="re24" name="re24" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00066" species="s40"/>
+<speciesReference metaid="CDMT00067" species="s75"/>
+<speciesReference metaid="CDMT00068" species="s74"/>
+<speciesReference metaid="CDMT00069" species="s80"/>
+<speciesReference metaid="CDMT00070" species="s81"/>
+<speciesReference metaid="CDMT00071" species="s82"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00072" species="s70"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re48" id="re25" name="re25" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00073" species="s40"/>
+<speciesReference metaid="CDMT00074" species="s82"/>
+<speciesReference metaid="CDMT00075" species="s83"/>
+<speciesReference metaid="CDMT00076" species="s84"/>
+<speciesReference metaid="CDMT00077" species="s80"/>
+<speciesReference metaid="CDMT00078" species="s56"/>
+<speciesReference metaid="CDMT00079" species="s81"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00080" species="s85"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re51" id="re26" name="re26" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00081" species="s70"/>
+<speciesReference metaid="CDMT00082" species="s86"/>
+<speciesReference metaid="CDMT00083" species="s98"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00084" species="s87"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re52" id="re27" name="re27" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00085" species="s86"/>
+<speciesReference metaid="CDMT00086" species="s89"/>
+<speciesReference metaid="CDMT00087" species="s88"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00088" species="s87"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re56" id="re28" name="re28" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00089" species="s86"/>
+<speciesReference metaid="CDMT00090" species="s52"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00091" species="s87"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re57" id="re29" name="re29" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00092" species="s90"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00093" species="s87"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re58" id="re30" name="re30" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00094" species="s87"/>
+<speciesReference metaid="CDMT00095" species="s91"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00096" species="s92"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re59" id="re31" name="re31" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00097" species="s93"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00098" species="s87"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re60" id="re32" name="re32" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00099" species="s94"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00100" species="s91"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re33" id="re33" name="re33" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00101" species="s86"/>
+<speciesReference metaid="CDMT00102" species="s89"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00103" species="s93"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re62" id="re34" name="re34" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00104" species="s86"/>
+<speciesReference metaid="CDMT00105" species="s88"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00106" species="s93"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re63" id="re35" name="re35" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00107" species="s86"/>
+<speciesReference metaid="CDMT00108" species="s52"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00109" species="s93"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re64" id="re36" name="re36" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00110" species="s88"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00111" species="s94"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re65" id="re37" name="re37" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00112" species="s88"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00113" species="s95"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re67" id="re38" name="re38" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00114" species="s89"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00115" species="s88"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re68" id="re39" name="re39" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00116" species="s52"/>
+<speciesReference metaid="CDMT00117" species="s88"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00118" species="s92"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re71" id="re40" name="re40" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00119" species="s86"/>
+<speciesReference metaid="CDMT00120" species="s88"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00121" species="s87"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re72" id="re41" name="re41" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00122" species="s88"/>
+<speciesReference metaid="CDMT00123" species="s331"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00124" species="s97"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re73" id="re42" name="re42" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00125" species="s98"/>
+<speciesReference metaid="CDMT00126" species="s95"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00127" species="s89"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re74" id="re43" name="re43" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00128" species="s98"/>
+<speciesReference metaid="CDMT00129" species="s99"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00130" species="s89"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re75" id="re44" name="re44" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00131" species="s89"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00132" species="s66"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re86" id="re53" name="re53" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00152" species="s117"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00153" species="s88"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re87" id="re54" name="re54" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00154" species="s95"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00155" species="s118"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re88" id="re55" name="re55" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00156" species="s88"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00157" species="s118"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re89" id="re56" name="re56" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00158" species="s97"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00159" species="s118"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re90" id="re57" name="re57" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00160" species="s119"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00161" species="s118"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re99" id="re66" name="re66" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00185" species="s139"/>
+<speciesReference metaid="CDMT00186" species="s140"/>
+<speciesReference metaid="CDMT00187" species="s141"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00188" species="s138"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re101" id="re67" name="re67" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00189" species="s138"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00190" species="s143"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re102" id="re68" name="re68" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00191" species="s143"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00192" species="s142"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re104" id="re69" name="re69" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00193" species="s147"/>
+<speciesReference metaid="CDMT00194" species="s40"/>
+<speciesReference metaid="CDMT00195" species="s56"/>
+<speciesReference metaid="CDMT00196" species="s82"/>
+<speciesReference metaid="CDMT00197" species="s148"/>
+<speciesReference metaid="CDMT00198" species="s81"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00199" species="s145"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re105" id="re70" name="re70" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00200" species="s145"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00201" species="s146"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re114" id="re78" name="re78" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00219" species="s40"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00220" species="s161"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re115" id="re79" name="re79" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00221" species="s161"/>
+<speciesReference metaid="CDMT00222" species="s162"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00223" species="s163"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re116" id="re91" name="re91" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00247" species="s166"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00248" species="s164"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re117" id="re92" name="re92" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00249" species="s164"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00250" species="s167"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re135" id="re93" name="re93" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00251" species="s191"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00252" species="s144"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re136" id="re94" name="re94" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00253" species="s190"/>
+<speciesReference metaid="CDMT00254" species="s144"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00255" species="s139"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re137" id="re95" name="re95" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00256" species="s144"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00257" species="s166"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re138" id="re96" name="re96" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00258" species="s192"/>
+<speciesReference metaid="CDMT00259" species="s193"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00260" species="s91"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re154" id="re106" name="re106" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00280" species="s211"/>
+<speciesReference metaid="CDMT00281" species="s212"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00282" species="s193"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re163" id="re109" name="re109" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00289" species="s223"/>
+<speciesReference metaid="CDMT00290" species="s142"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00291" species="s224"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re164" id="re110" name="re110" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00292" species="s224"/>
+<speciesReference metaid="CDMT00293" species="s225"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00294" species="s92"/>
+<speciesReference metaid="CDMT00295" species="s233"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re165" id="re111" name="re111" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00296" species="s224"/>
+<speciesReference metaid="CDMT00297" species="s227"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00298" species="s226"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re166" id="re112" name="re112" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00299" species="s226"/>
+<speciesReference metaid="CDMT00300" species="s228"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00301" species="s229"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re167" id="re113" name="re113" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00302" species="s226"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00303" species="s230"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re168" id="re114" name="re114" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00304" species="s230"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00305" species="s81"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re169" id="re115" name="re115" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00306" species="s231"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00307" species="s226"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re170" id="re116" name="re116" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00308" species="s142"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00309" species="s226"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re171" id="re117" name="re117" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00310" species="s232"/>
+<speciesReference metaid="CDMT00311" species="s229"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00312" species="s142"/>
+<speciesReference metaid="CDMT00313" species="s238"/>
+<speciesReference metaid="CDMT00314" species="s239"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re172" id="re118" name="re118" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00315" species="s233"/>
+<speciesReference metaid="CDMT00316" species="s92"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00317" species="s81"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re173" id="re119" name="re119" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00318" species="s81"/>
+<speciesReference metaid="CDMT00319" species="s92"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00320" species="s234"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re174" id="re120" name="re120" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00321" species="s236"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00322" species="s237"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re175" id="re121" name="re121" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00323" species="s235"/>
+<speciesReference metaid="CDMT00324" species="s237"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00325" species="s234"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re176" id="re122" name="re122" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00326" species="s240"/>
+<speciesReference metaid="CDMT00327" species="s242"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00328" species="s241"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re177" id="re123" name="re123" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00329" species="s241"/>
+<speciesReference metaid="CDMT00330" species="s74"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00331" species="s243"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re178" id="re124" name="re124" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00332" species="s245"/>
+<speciesReference metaid="CDMT00333" species="s242"/>
+<speciesReference metaid="CDMT00334" species="s240"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00335" species="s244"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re179" id="re125" name="re125" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00336" species="s246"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00337" species="s247"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re180" id="re126" name="re126" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00338" species="s247"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00339" species="s240"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re181" id="re127" name="re127" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00340" species="s248"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00341" species="s247"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re182" id="re128" name="re128" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00342" species="s247"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00343" species="s245"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re189" id="re134" name="re134" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00357" species="s225"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00358" species="s258"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re190" id="re135" name="re135" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00359" species="s258"/>
+<speciesReference metaid="CDMT00360" species="s229"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00361" species="s233"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re191" id="re136" name="re136" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00362" species="s259"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00363" species="s260"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re192" id="re137" name="re137" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00364" species="s260"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00365" species="s225"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re199" id="re144" name="re144" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00379" species="s142"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00380" species="s270"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re204" id="re147" name="re147" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00385" species="s274"/>
+<speciesReference metaid="CDMT00386" species="s276"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00387" species="s275"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re205" id="re148" name="re148" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00388" species="s275"/>
+<speciesReference metaid="CDMT00389" species="s277"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00390" species="s142"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re248" id="re153" name="re153" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00400" species="s226"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00401" species="s314"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re216" id="re154" name="re154" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00402" species="s288"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00403" species="s289"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re217" id="re155" name="re155" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00404" species="s289"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00405" species="s290"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re218" id="re156" name="re156" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00406" species="s290"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00407" species="s291"/>
+<speciesReference metaid="CDMT00408" species="s292"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re226" id="re157" name="re157" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00409" species="s290"/>
+<speciesReference metaid="CDMT00410" species="s294"/>
+<speciesReference metaid="CDMT00411" species="s295"/>
+<speciesReference metaid="CDMT00412" species="s298"/>
+<speciesReference metaid="CDMT00413" species="s296"/>
+<speciesReference metaid="CDMT00414" species="s297"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00415" species="s293"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re227" id="re158" name="re158" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00416" species="s299"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00417" species="s298"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re234" id="re159" name="re159" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00418" species="s291"/>
+<speciesReference metaid="CDMT00419" species="s308"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00420" species="s307"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re235" id="re160" name="re160" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00421" species="s291"/>
+<speciesReference metaid="CDMT00422" species="s309"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00423" species="s296"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re236" id="re161" name="re161" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00424" species="s291"/>
+<speciesReference metaid="CDMT00425" species="s290"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00426" species="s310"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re243" id="re162" name="re162" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00427" species="s312"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00428" species="s313"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re244" id="re163" name="re163" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00429" species="s313"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00430" species="s311"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re246" id="re164" name="re164" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00431" species="s291"/>
+<speciesReference metaid="CDMT00432" species="s311"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00433" species="s307"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re267" id="re171" name="re171" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00449" species="s316"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00450" species="s298"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re273" id="re172" name="re172" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00451" species="s293"/>
+<speciesReference metaid="CDMT00452" species="s324"/>
+<speciesReference metaid="CDMT00453" species="s183"/>
+<speciesReference metaid="CDMT00454" species="s327"/>
+<speciesReference metaid="CDMT00455" species="s325"/>
+<speciesReference metaid="CDMT00456" species="s326"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00457" species="s328"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re276" id="re173" name="re173" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00458" species="s330"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00459" species="s329"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re277" id="re174" name="re174" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00460" species="s329"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00461" species="s299"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re278" id="re175" name="re175" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00462" species="s331"/>
+<speciesReference metaid="CDMT00463" species="s299"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00464" species="s316"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re279" id="re176" name="re176" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00465" species="s332"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00466" species="s333"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re280" id="re177" name="re177" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00467" species="s333"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00468" species="s324"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re281" id="re178" name="re178" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00469" species="s335"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00470" species="s334"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re282" id="re179" name="re179" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00471" species="s334"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00472" species="s336"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re283" id="re180" name="re180" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00473" species="s336"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00474" species="s293"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re284" id="re181" name="re181" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00475" species="s291"/>
+<speciesReference metaid="CDMT00476" species="s336"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00477" species="s92"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re127" id="re182" name="re182" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00478" species="s180"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00479" species="s181"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re128" id="re183" name="re183" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00480" species="s181"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00481" species="s182"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re129" id="re184" name="re184" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00482" species="s181"/>
+<speciesReference metaid="CDMT00483" species="s184"/>
+<speciesReference metaid="CDMT00484" species="s180"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00485" species="s183"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re145" id="re185" name="re185" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00486" species="s200"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00487" species="s201"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re147" id="re186" name="re186" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00488" species="s201"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00489" species="s184"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re148" id="re187" name="re187" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00490" species="s184"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00491" species="s202"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re157" id="re188" name="re188" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00492" species="s217"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00493" species="s218"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re158" id="re189" name="re189" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00494" species="s218"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00495" species="s184"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re159" id="re190" name="re190" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00496" species="s180"/>
+<speciesReference metaid="CDMT00497" species="s184"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00498" species="s219"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re160" id="re191" name="re191" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00499" species="s184"/>
+<speciesReference metaid="CDMT00500" species="s221"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00501" species="s220"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re161" id="re192" name="re192" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00502" species="s180"/>
+<speciesReference metaid="CDMT00503" species="s184"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00504" species="s222"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re301" id="re198" name="re198" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00515" species="s338"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00516" species="s337"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re302" id="re199" name="re199" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00517" species="s337"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00518" species="s295"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re303" id="re200" name="re200" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00519" species="s339"/>
+<speciesReference metaid="CDMT00520" species="s295"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00521" species="s340"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re304" id="re201" name="re201" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00522" species="s348"/>
+<speciesReference metaid="CDMT00523" species="s295"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00524" species="s341"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re305" id="re202" name="re202" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00525" species="s342"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00526" species="s339"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re308" id="re205" name="re205" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00531" species="s346"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00532" species="s347"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re309" id="re206" name="re206" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00533" species="s347"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00534" species="s218"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re310" id="re207" name="re207" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00535" species="s184"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00536" species="s348"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re314" id="re211" name="re211" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00543" species="s352"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00544" species="s96"/>
+</listOfProducts>
+</reaction>
+<reaction metaid="re315" id="re212" name="re212" reversible="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00545" species="s96"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00546" species="s331"/>
+</listOfProducts>
+</reaction>
+</listOfReactions>
+</model>
+</sbml>
